@@ -81,40 +81,6 @@ void loop() {
           digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
         return 0;
         }
-        //adição teste 1
-      /*
-      adicao = i5 i4 + i3 i2
-        if (adicao = 1)
-          digitalWrite(Out0,HIGH);
-        else if (adicao = 2)
-          digitalWrite(Out1,HIGH);
-        else if (adicao = 3)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
-        else if (adicao = 4)
-          digitalWrite(Out2,HIGH);
-        else if (adicao = 5)
-          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
-        else if (adicao = 6)
-          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
-        else if (adicao = 7)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
-        else if (adicao = 8)
-          digitalWrite(Out3,HIGH);
-        else if (adicao = 9)
-          digitalWrite(Out0,HIGH);digitalWrite(Out3,HIGH);
-        else if (adicao = 10)
-          digitalWrite(Out1,HIGH);digitalWrite(Out3,HIGH);
-        else if (adicao = 11)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out3,HIGH);
-        else if (adicao = 12)
-          digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
-        else if (adicao = 13)
-          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
-        else if (adicao = 14)
-          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
-        else if (adicao = 15)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
-        */
       break;
 
      case 1:
@@ -280,7 +246,7 @@ void loop() {
 
 
 
-
+//lixão
 /*
   int 0 = ((i5==0)&&(i4==0)&&(i5==0)&&(i4==0)&&(i3==0)&&(i2==0)&&(i1==0)&&(i0==0));
   int 1 = ((i5==0)&&(i4==0)&&(i5==0)&&(i4==0)&&(i3==0)&&(i2==0)&&(i1==0)&&(i0==1));
@@ -337,3 +303,37 @@ void loop() {
   }
 }
 */
+//adição teste 1
+      /*
+      adicao = i5 i4 + i3 i2
+        if (adicao = 1)
+          digitalWrite(Out0,HIGH);
+        else if (adicao = 2)
+          digitalWrite(Out1,HIGH);
+        else if (adicao = 3)
+          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
+        else if (adicao = 4)
+          digitalWrite(Out2,HIGH);
+        else if (adicao = 5)
+          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
+        else if (adicao = 6)
+          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
+        else if (adicao = 7)
+          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
+        else if (adicao = 8)
+          digitalWrite(Out3,HIGH);
+        else if (adicao = 9)
+          digitalWrite(Out0,HIGH);digitalWrite(Out3,HIGH);
+        else if (adicao = 10)
+          digitalWrite(Out1,HIGH);digitalWrite(Out3,HIGH);
+        else if (adicao = 11)
+          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out3,HIGH);
+        else if (adicao = 12)
+          digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
+        else if (adicao = 13)
+          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
+        else if (adicao = 14)
+          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
+        else if (adicao = 15)
+          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
+        */
