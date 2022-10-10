@@ -173,6 +173,34 @@ void loop() {
           for(int i = 0; i < n; i++)
           {
             cout << a[i];
+            if (a[i] = 0111)
+            digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH); digitalWrite(Out2,HIGH);
+            else if (a[i] = 0110)
+              digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
+            else if (a[i] = 0100)
+              digitalWrite(Out2,HIGH);
+            else if (a[i] = 0011)
+              digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH);
+            else if (a[i] = 0010)
+              digitalWrite(Out1,HIGH);
+            else if (a[i] = 0001)
+              digitalWrite(Out0,HIGH);
+            else if (a[i] = 1111)
+              digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH); digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1110)
+              digitalWrite(Out1,HIGH); digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1101)
+              digitalWrite(Out0,HIGH); digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1100)
+              digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1011)
+              digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1010)
+              digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1001)
+              digitalWrite(Out0,HIGH); digitalWrite(Out3,HIGH);
+            else if (a[i] = 1000)
+              digitalWrite(Out3,HIGH);
           }
         }
       }
@@ -200,22 +228,23 @@ void loop() {
       string a = i5+i4, b=i3+i2;
       cout<<"o resultado parcial é: "<<add(a, b);
       cout<<"o resultado final é: "<<add(a, b, x);
-        if (add(a, b) = 001)
+        if (add(a, b) = 000001)
           digitalWrite(Out0,HIGH);
-        else if (add(a, b) = 010)
+        else if (add(a, b) = 000010)
           digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 011)
+        else if (add(a, b) = 000011)
           digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 100)
+        else if (add(a, b) = 000100)
           digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 101)
+        else if (add(a, b) = 000101)
           digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 110)
+        else if (add(a, b) = 000110)
           digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
+        
         return 0;
         }
 
-      if (cout<<"o resultado final é: "<<add(a, b, x) > 111111) //caso de overflow
+      if (cout<<"resultado "<<add(a, b, x) > 111111) //caso de overflow
         digitalWrite(Out0,HIGH);
         delay(500);
         digitalWrite(Out1,HIGH);
@@ -233,6 +262,21 @@ void loop() {
       case 3:
       //sub x
       int y = bit(15);
+      
+      if (cout<<"resultado "<<add(a, b, x) > 111111) //caso de overflow
+        digitalWrite(Out0,HIGH);
+        delay(500);
+        digitalWrite(Out1,HIGH);
+        delay(500);
+        digitalWrite(Out2,HIGH);
+        delay(500);
+        digitalWrite(Out3,HIGH);
+        delay(500);
+        digitalWrite(Out4,HIGH);
+        delay(500);
+        digitalWrite(Out5,HIGH);
+        delay(500);
+        break;
 
       break;
 
