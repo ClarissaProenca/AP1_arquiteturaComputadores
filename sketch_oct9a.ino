@@ -48,7 +48,7 @@ void loop() {
 
   switch (entrada){
       case 0:
-      // adição 2 teste
+      // adição 2o teste
       string add(string a, string b){
         string resultado = "";
         int temp = 0;
@@ -65,7 +65,7 @@ void loop() {
       }
 
       int main(){
-      string a = i5i4, b=i3i2;
+      string a = i5+i4, b=i3+i2;
       cout<<"o resultado é: "<<add(a, b);
         if (add(a, b) = 001)
           digitalWrite(Out0,HIGH);
@@ -119,115 +119,97 @@ void loop() {
 
      case 1:
      //sub
-      diff = i5 - i4 - i3 - i2
-      void Subtract(int n, int a[], int b[], int c[], int d[]) {
-    
-      // 1's Complement of the subtrahend 
-      for(int i = 0; i < n; i++)
-      {
-        //Replace 1 by 0
-        if(b[i] == 1)
-        {
-          b[i] = 0;
-        }
-      
-        //Replace 0 by 1
-        else
-        {
-          b[i] = 1;
-        }
-      }
-
-      //Add 1 at end to get 2's Complement of the subtrahend
-      for(int i = n - 1; i >= 0; i--)
-      {					
-        if(b[i] == 0)
-        {
-          b[i] = 1;
-          break;
-        }
-        else
-        {
-          b[i] = 0;
-        }
-      }
-
-      // Represents carry
-      int t = 0;						
-      for(int i = n - 1; i >= 0; i--)
-      {
-        
-        // Add a, b and carry
-        a[i] = a[i] + b[i] + t;
-      
-        // If a[i] is 2
-        if(a[i] == 2)
-        {
-          a[i] = 0;
-          t = 1;
-
-        }
-      
-        // If a[i] is 3
-        else if(a[i] == 3)
-        {
-          a[i] = 1;
-          t = 1;
-        }
-        else
-          t = 0;
-      }
-
-      cout << endl;
-      
-      // If carry is generated
-      // discard the carry
-      if(t==1)
-      {	
-      
-      // print the result
-      for(int i = 0; i < n; i++)
-      {
-          
-        // Print the result
-        cout<<a[i];	
-      }
-      }
-
-      // if carry is not generated
-      else				
-      {	
-        // Calculate 2's Complement
-        // of the obtained result
+      void Subtract(int n, int a[], int b[]) {
+        // Complemento de 1 do subtraendo
         for(int i = 0; i < n; i++)
-        {				
-          if(a[i] == 1)
-            a[i] = 0;
-          else
-            a[i] = 1;
-        }
-        for(int i = n - 1; i >= 0; i--)
         {
-          if(a[i] == 0)
+          //Trocando o 1 pelo 0
+          if(b[i] == 1)
           {
-            a[i] = 1;
+            b[i] = 0;
+          }
+        
+          //Trocando o 0 pelo 1
+          else
+          {
+            b[i] = 1;
+          }
+        }
+        //Adicionando 1 no final pra obter complemento de 2
+        for(int i = n - 1; i >= 0; i--)
+        {					
+          if(b[i] == 0)
+          {
+            b[i] = 1;
             break;
           }
-        else
-          a[i] = 0;
+          else
+          {
+            b[i] = 0;
+          }
         }
-      
-        // Add -ve sign to represent
-        cout << "-";		
-      
-        // -ve result
-        // Print the resultant array
+        // Carry
+        int t = 0;						
+        for(int i = n - 1; i >= 0; i--)
+        { 
+          // Adiciona a, b e o carry
+          a[i] = a[i] + b[i] + t;
+        
+          // If a[i] is 2
+          if(a[i] == 2)
+          {
+            a[i] = 0;
+            t = 1;
+          }
+          // Se a[i] for 3
+          else if(a[i] == 3)
+          {
+            a[i] = 1;
+            t = 1;
+          }
+          else
+            t = 0;
+        }
+        cout << endl;
+        // Descarda carry se tiver
+        if(t==1)
+        {	
+        // mostra resultado
         for(int i = 0; i < n; i++)
         {
-          cout << a[i];
+          // mostra resultado
+          cout<<a[i];	
+        }
+        }
+        // Se não tiver carry
+        else				
+        {	
+          // Calcula o complemento de 2 do resultado
+          for(int i = 0; i < n; i++)
+          {				
+            if(a[i] == 1)
+              a[i] = 0;
+            else
+              a[i] = 1;
+          }
+          for(int i = n - 1; i >= 0; i--)
+          {
+            if(a[i] == 0)
+            {
+              a[i] = 1;
+              break;
+            }
+          else
+            a[i] = 0;
+          }
+            cout << "-";		
+          // Mostra o array do resultado
+          for(int i = 0; i < n; i++)
+          {
+            cout << a[i];
+          }
         }
       }
-    }
 
       break;
       case 2:
@@ -249,7 +231,7 @@ void loop() {
       }
 
       int main(){
-      string a = i5i4, b=i3i2;
+      string a = i5+i4, b=i3+i2;
       cout<<"o resultado parcial é: "<<add(a, b);
       cout<<"o resultado final é: "<<add(a, b, x);
         if (add(a, b) = 001)
