@@ -48,7 +48,40 @@ void loop() {
 
   switch (entrada){
       case 0:
-      //adição teste 1
+      // adição 2 teste
+      string add(string a, string b){
+        string resultado = "";
+        int temp = 0;
+        int size_a = a.size() - 1;
+        int size_b = b.size() - 1;
+        while (size_a >= 0 || size_b >= 0 || temp == 1){
+            temp += ((size_a >= 0)? a[size_a] - '0': 0);
+            temp += ((size_b >= 0)? b[size_b] - '0': 0);
+            resultado = char(temp % 2 + '0') + resultado;
+            temp /= 2;
+            size_a--; size_b--;
+        }
+        return resultado;
+      }
+
+      int main(){
+      string a = i5i4, b=i3i2;
+      cout<<"o resultado é: "<<add(a, b);
+      return 0;
+        if (add(a, b) = 001)
+          digitalWrite(Out0,HIGH);
+        else if (add(a, b) = 010)
+          digitalWrite(Out1,HIGH);
+        else if (add(a, b) = 011)
+          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
+        else if (add(a, b) = 100)
+          digitalWrite(Out2,HIGH);
+        else if (add(a, b) = 101)
+          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
+        else if (add(a, b) = 110)
+          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
+        }
+        //adição teste 1
       /*
       adicao = i5 i4 + i3 i2
         if (adicao = 1)
@@ -83,39 +116,6 @@ void loop() {
           digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);
         */
       break;
-      // adição 2 teste
-      string add(string a, string b){
-        string resultado = "";
-        int temp = 0;
-        int size_a = a.size() - 1;
-        int size_b = b.size() - 1;
-        while (size_a >= 0 || size_b >= 0 || temp == 1){
-            temp += ((size_a >= 0)? a[size_a] - '0': 0);
-            temp += ((size_b >= 0)? b[size_b] - '0': 0);
-            resultado = char(temp % 2 + '0') + resultado;
-            temp /= 2;
-            size_a--; size_b--;
-        }
-        return resultado;
-      }
-
-      int main(){
-      string a = i5i4, b=i3i2;
-      cout<<"o resultado é: "<<add(a, b);
-      return 0;
-        if (add(a, b) = 001)
-          digitalWrite(Out0,HIGH);
-        else if (add(a, b) = 010)
-          digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 011)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 100)
-          digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 101)
-          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 110)
-          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
-        }
 
      case 1:
      //sub
