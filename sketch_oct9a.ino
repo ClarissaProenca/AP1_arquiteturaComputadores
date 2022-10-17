@@ -182,53 +182,89 @@ void loop() {
           if((subtracaoBit() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
           if((subtracaoBit() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
           if((subtracaoBit() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
-        delay(timr);
+          delay(timr);
         break;
 
         case 1: //1 - complemento de 1          
           if (num > y){
             return subtracaoBit();
           } else {
-            int binaryNum[y];
-            int i = 0;
+              int binaryNum[y];
+              int i = 0;
 
-            while (n > 0) {
-                binaryNum[i] = n % 2;
-                n = n / 2;
-                i++;
-            }
-            for(int i = 0; i < 8; i++) {
-              if(binaryNum[i] == '1')
-              {
-                  binaryNum[i] = '0';
+              while (n > 0) {
+                  binaryNum[i] = n % 2;
+                  n = n / 2;
+                  i++;
               }
-              else if(binaryNum[i] == '0')
+              for(int i = 0; i < 8; i++) {
+                if(binaryNum[i] == '1')
+                {
+                    binaryNum[i] = '0';
+                }
+                else if(binaryNum[i] == '0')
+                {
+                    binaryNum[i] = '1';
+                }
+              int valorCompUmY = 0;
+              for (int i=0; i< strlen(s); i++)
               {
-                  binaryNum[i] = '1';
+                valorCompUmY *= 2; // double the result so far
+                if (binaryNum[i] == '1') valorCompUmY++;  //add 1 if needed
               }
-
           }
-        
-        break;
+          if(subtracaoBit() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+          if((subtracaoBit() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+          if((subtracaoBit() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+          if((subtracaoBit() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+          delay(timr);
+          break;
+
         case 2: //2 - coplemento de 2
-          if(i3 == 0) {i3 = 1;} else {i3 = 0;}
-          if(i4 == 0) {i4 = 1;} else {i4 = 0;}
-          //transformando em complemento de 2 
-          int comp2 = 0
-          if (i3 ==0 && i4 ==0) {
-            i3 = 0;
-            i4 = 1;
-          } else if (i3 ==0 && i4 ==1) {
-            i3 = 1;
-            i4 = 0;
-          } else if (i3 ==1 && i4 ==0){
-            i3 = 1;
-            i4 = 1;
-          } else if (i3 ==1 && i4 ==1) {
-            comp2 = 1
-            num2 = (i3 * 4) + (i4 * 8) + (comp2 * 16);
+          if (num > y){
+            return subtracaoBit();
+          } else {
+              int binaryNum[y];
+              int i = 0;
+
+              while (n > 0) {
+                  binaryNum[i] = n % 2;
+                  n = n / 2;
+                  i++;
+              }
+              for(int i = 0; i < 8; i++) { //complemento 1
+                if(binaryNum[i] == '1') {
+                    binaryNum[i] = '0';
+                } else if(binaryNum[i] == '0'){
+                    binaryNum[i] = '1';
+                }
+                //complemento de 2
+                int carry = 1;
+                for (i = size - 1; i >= 0; i--) {
+                  if (binaryNum[i] == '1' && carry == 1) {
+                    binaryNum[i] = '0';
+                  } else if (binaryNum[i] == '0' && carry == 1) {
+                    binaryNum[i] = '1';
+                    carry = 0;
+                  } else {
+                    binaryNum[i] = binaryNum[i];
+                  }
+                }                
+
+              int valorCompDoisY = 0;
+              for (int i=0; i< strlen(s); i++)
+              {
+                valorCompDoisY *= 2; // double the result so far
+                if (binaryNum[i] == '1') valorCompDoisY++;  //add 1 if needed
+              }
           }
-        break;
+          if(subtracaoBit() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+          if((subtracaoBit() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+          if((subtracaoBit() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+          if((subtracaoBit() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+          delay(timr);
+          break;
+
         case 3://3 - excesso
           //quantos bits a maquina tem, 6 a nossa
           // valor em decimal
