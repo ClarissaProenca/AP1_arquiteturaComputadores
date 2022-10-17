@@ -36,6 +36,15 @@ void loop() {
   i5=digitalRead(In5);
 
   digitalWrite(Out0,LOW);digitalWrite(Out1,LOW);digitalWrite(Out2,LOW);digitalWrite(Out3,LOW);digitalWrite(Out4,LOW);digitalWrite(Out5,LOW); // vai parecer q ta sempre apagado. colocar delay 10s? 
+  delay(timr);
+
+  int converteBinario(int num) {
+        for(i=0; num>0; i++)    
+          {    
+          a[i]=num%2;    
+          num= num/2;  
+          } 
+        }
 
   if ((i1==0)&&(i0==0))
     entrada = 0;
@@ -54,231 +63,104 @@ void loop() {
       case 0:
       // adição
       
-      int somaDecimal(){
-        soma = ((i2 * 1) * (i3 * 2)) + ((i3 * 4) * (i4 * 8));
-        return soma;
-      }
-
-      int converteBinario() {
-        for(i=0; n>0; i++)    
-          {    
-          a[i]=n%2;    
-          n= n/2;  
-          } 
+        int somaDecimal(){
+          int soma = ((i2 * 1) + (i3 * 2)) + ((i3 * 4) + (i4 * 8));
+          return soma;
         }
 
-
-      int main(){
-      string a = i5+i4, b=i3+i2;
-      //converter binário pra decimal
-      //digitalRead dentro do main
-      cout<<"o resultado é: "<<add(a, b);
-        if (add(a, b) = 001)
-          digitalWrite(Out0,HIGH);
-        else if (add(a, b) = 010)
-          digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 011)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 100)
-          digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 101)
-          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 110)
-          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
-        return 0;
-        }
-      break;
+        if(somaDecimal() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+        if((somaDecimal() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+        if((somaDecimal() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+        if((somaDecimal() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+        delay(timr);
+        break;
 
      case 1:
      //sub
-      void Subtract(int n, int a[], int b[]) {
-        // Complemento de 1 do subtraendo
-        for(int i = 0; i < n; i++)
-        {
-          //Trocando o 1 pelo 0
-          if(b[i] == 1)
-          {
-            b[i] = 0;
-          }
-        
-          //Trocando o 0 pelo 1
-          else
-          {
-            b[i] = 1;
-          }
+      int num1 = (i2 * 1) + (i3 * 2);
+      int num2 = (i3 * 4) + (i4 * 8);
+      if (num1 > num2){
+        int subtracaoDecimal(){
+          int sub = (num1 - num2);
+          return sub;
         }
-        //Adicionando 1 no final pra obter complemento de 2
-        for(int i = n - 1; i >= 0; i--)
-        {          
-          if(b[i] == 0)
-          {
-            b[i] = 1;
-            break;
+      } else {
+          if(i3 == 0) {i3 = 1;} else {i3 = 0;}
+          if(i4 == 0) {i4 = 1;} else {i4 = 0;}
+          //transformando em complemento de 2 
+          int comp2 = 0
+          if (i3 ==0 && i4 ==0) {
+            i3 = 0;
+            i4 = 1;
+          } else if (i3 ==0 && i4 ==1) {
+            i3 = 1;
+            i4 = 0;
+          } else if (i3 ==1 && i4 ==0){
+            i3 = 1;
+            i4 = 1;
+          } else if (i3 ==1 && i4 ==1) {
+            comp2 = 1
+            num2 = (i3 * 4) + (i4 * 8) + (comp2 * 16);
           }
-          else
-          {
-            b[i] = 0;
+          int subtracaoDecimal(){
+          int sub = (num1 - num2);
+          return sub;
           }
-        }
-        // Carry
-        int t = 0;            
-        for(int i = n - 1; i >= 0; i--)
-        { 
-          // Adiciona a, b e o carry
-          a[i] = a[i] + b[i] + t;
-        
-          // If a[i] is 2
-          if(a[i] == 2)
-          {
-            a[i] = 0;
-            t = 1;
-          }
-          // Se a[i] for 3
-          else if(a[i] == 3)
-          {
-            a[i] = 1;
-            t = 1;
-          }
-          else
-            t = 0;
-        }
-        cout << endl;
-        // Descarda carry se tiver
-        if(t==1)
-        { 
-        // mostra resultado
-        for(int i = 0; i < n; i++)
-        {
-          // mostra resultado
-          cout<<a[i]; 
-        }
-        }
-        // Se não tiver carry
-        else        
-        { 
-          // Calcula o complemento de 2 do resultado
-          for(int i = 0; i < n; i++)
-          {       
-            if(a[i] == 1)
-              a[i] = 0;
-            else
-              a[i] = 1;
-          }
-          for(int i = n - 1; i >= 0; i--)
-          {
-            if(a[i] == 0)
-            {
-              a[i] = 1;
-              break;
-            }
-          else
-            a[i] = 0;
-          }
-            cout << "-";    
-          // Mostra o array do resultado
-          for(int i = 0; i < n; i++)
-          {
-            cout << a[i];
-            if (a[i] = 0111)
-            digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH); digitalWrite(Out2,HIGH);
-            else if (a[i] = 0110)
-              digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
-            else if (a[i] = 0100)
-              digitalWrite(Out2,HIGH);
-            else if (a[i] = 0011)
-              digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH);
-            else if (a[i] = 0010)
-              digitalWrite(Out1,HIGH);
-            else if (a[i] = 0001)
-              digitalWrite(Out0,HIGH);
-            else if (a[i] = 1111)
-              digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH); digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1110)
-              digitalWrite(Out1,HIGH); digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1101)
-              digitalWrite(Out0,HIGH); digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1100)
-              digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1011)
-              digitalWrite(Out0,HIGH); digitalWrite(Out1,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1010)
-              digitalWrite(Out2,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1001)
-              digitalWrite(Out0,HIGH); digitalWrite(Out3,HIGH);
-            else if (a[i] = 1000)
-              digitalWrite(Out3,HIGH);
-          }
-        }
       }
+      if(subtracaoDecimal() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+      if((subtracaoDecimal() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+      if((subtracaoDecimal() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+      if((subtracaoDecimal() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+      delay(timr);
+      break;
 
       break;
       case 2:
       //add x
-      int x = bit(10);
-      string add(string a, string b,){
-        string resultado = "";
-        int temp = 0;
-        int size_a = a.size() - 1;
-        int size_b = b.size() - 1;
-        while (size_a >= 0 || size_b >= 0 || temp == 1){
-            temp += ((size_a >= 0)? a[size_a] - '0': 0);
-            temp += ((size_b >= 0)? b[size_b] - '0': 0);
-            resultado = char(temp % 2 + '0') + resultado;
-            temp /= 2;
-            size_a--; size_b--;
-        }
-        return resultado;
+      int x = 15;
+      int somaDireta(){
+        int somaD = ((i2 * 1) + (i3 * 2) + (i3 * 4) + (i4 * 8)) + x;
+        return somaD;
       }
 
-      int main(){
-      string a = i5+i4, b=i3+i2;
-      cout<<"o resultado parcial é: "<<add(a, b);
-      cout<<"o resultado final é: "<<add(a, b, x);
-        if (add(a, b) = 000001)
-          digitalWrite(Out0,HIGH);
-        else if (add(a, b) = 000010)
-          digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 000011)
-          digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);
-        else if (add(a, b) = 000100)
-          digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 000101)
-          digitalWrite(Out0,HIGH);digitalWrite(Out2,HIGH);
-        else if (add(a, b) = 000110)
-          digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);
-          //variavel high ou low. função de acender os leds. olhar em digitalWrite()
+      if (somaDireta()<33){
+        if(somaDireta() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+        if((somaDireta() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+        if((somaDireta() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+        if((somaDireta() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+        delay(timr);
         
-        return 0;
-        }
-
-      if (cout<<"resultado "<<add(a, b, x) > 111111) //caso de overflow
+      } else {
         digitalWrite(Out0,HIGH);
         delay(500);
-        digitalWrite(Out0,LOW);
-        digitalWrite(Out1,HIGH);
+        digitalWrite(Out0,LOW);digitalWrite(Out1,HIGH);
         delay(500);
-        digitalWrite(Out0,LOW);
-        digitalWrite(Out2,HIGH);
+        digitalWrite(Out1,LOW);igitalWrite(Out2,HIGH);
         delay(500);
-        digitalWrite(Out0,LOW);
-        digitalWrite(Out3,HIGH);
+        digitalWrite(Out2,LOW);digitalWrite(Out3,HIGH);
         delay(500);
-        digitalWrite(Out0,LOW);
-        digitalWrite(Out4,HIGH);
+        digitalWrite(Out3,LOW);digitalWrite(Out4,HIGH);
         delay(500);
-        digitalWrite(Out0,LOW);
-        digitalWrite(Out5,HIGH);
+        digitalWrite(Out4,LOW);digitalWrite(Out5,HIGH);
         delay(500);
-        digitalWrite(Out0,LOW);
-        //ta acendendo um de cada vez
-        break;
+        digitalWrite(Out5,LOW);
+        delay(timr);
+        //ta acendendo um de cada vez        
+      }
       break;
       
       case 3:
       //sub x
-      int y = bit(15);
+      int y = 15;
       int modo = 0;
       int tipo;
+      int num = ((i2 * 1) + (i3 * 2) + (i3 * 4) + (i4 * 8));
+
+      int subtracaoBit(){
+          int sub = num - y;
+          return sub;
+          }
+
       //0 - bit sinal
       //1 - complemento de 1
       //2 - coplemento de 2
@@ -295,187 +177,57 @@ void loop() {
 
       switch tipo:
         case 0: //0 - bit sinal
-        string a;
-        string b;
-        string a = i5+i4, b=i3+i2;
-        string c;
-        
-        cin >> i5+i4;
-        cin >> i3+i2;
-    
-        c = bin( dec(a) - dec(b) );
-    
-        cout << "res: " << c << endl;
-    
-        return 0;
-
+          int bitSinal = subtracaoBit();
+          if(subtracaoBit() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+          if((subtracaoBit() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+          if((subtracaoBit() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+          if((subtracaoBit() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+        delay(timr);
         break;
-        case 1: //1 - complemento de 1
 
-        void Subtract(int n, int a[], int b[]) {
-        // Complemento de 1 do subtraendo
-        for(int i = 0; i < n; i++)
-        {
-          //Trocando o 1 pelo 0
-          if(b[i] == 1)
-          {
-            b[i] = 0;
-          }
-        
-          //Trocando o 0 pelo 1
-          else
-          {
-            b[i] = 1;
-          }
-        }
-        // Carry
-        int t = 0;            
-        for(int i = n - 1; i >= 0; i--)
-        { 
-          // Adiciona a, b e o carry
-          a[i] = a[i] + b[i] + t;
-        
-          // If a[i] is 2
-          if(a[i] == 2)
-          {
-            a[i] = 0;
-            t = 1;
-          }
-          // Se a[i] for 3
-          else if(a[i] == 3)
-          {
-            a[i] = 1;
-            t = 1;
-          }
-          else
-            t = 0;
-        }
-        cout << endl;
-        // mostra resultado
-        for(int i = 0; i < n; i++)
-        {
-          // mostra resultado
-          cout<<a[i]; 
-        }
-        }
-        // Se não tiver carry
-        else        
-        { 
-          // Calcula o complemento de 1 do resultado
-          for(int i = 0; i < n; i++)
-          {       
-            if(a[i] == 1)
-              a[i] = 0;
-            else
-              a[i] = 1;
-          }
-          for(int i = n - 1; i >= 0; i--)
-          {
-            if(a[i] == 0)
-            {
-              a[i] = 1;
-              break;
+        case 1: //1 - complemento de 1          
+          if (num > y){
+            return subtracaoBit();
+          } else {
+            int binaryNum[y];
+            int i = 0;
+
+            while (n > 0) {
+                binaryNum[i] = n % 2;
+                n = n / 2;
+                i++;
             }
-          else
-            a[i] = 0;
+            for(int i = 0; i < 8; i++) {
+              if(binaryNum[i] == '1')
+              {
+                  binaryNum[i] = '0';
+              }
+              else if(binaryNum[i] == '0')
+              {
+                  binaryNum[i] = '1';
+              }
+
           }
-            cout << "-";    
-          // Mostra o array do resultado
-          for(int i = 0; i < n; i++)
-          {
-            cout << a[i];
         
         break;
         case 2: //2 - coplemento de 2
-        void Subtract(int n, int a[], int b[]) {
-        // Complemento de 1 do subtraendo
-        for(int i = 0; i < n; i++)
-        {
-          //Trocando o 1 pelo 0
-          if(b[i] == 1)
-          {
-            b[i] = 0;
+          if(i3 == 0) {i3 = 1;} else {i3 = 0;}
+          if(i4 == 0) {i4 = 1;} else {i4 = 0;}
+          //transformando em complemento de 2 
+          int comp2 = 0
+          if (i3 ==0 && i4 ==0) {
+            i3 = 0;
+            i4 = 1;
+          } else if (i3 ==0 && i4 ==1) {
+            i3 = 1;
+            i4 = 0;
+          } else if (i3 ==1 && i4 ==0){
+            i3 = 1;
+            i4 = 1;
+          } else if (i3 ==1 && i4 ==1) {
+            comp2 = 1
+            num2 = (i3 * 4) + (i4 * 8) + (comp2 * 16);
           }
-        
-          //Trocando o 0 pelo 1
-          else
-          {
-            b[i] = 1;
-          }
-        }
-        //Adicionando 1 no final pra obter complemento de 2
-        for(int i = n - 1; i >= 0; i--)
-        {          
-          if(b[i] == 0)
-          {
-            b[i] = 1;
-            break;
-          }
-          else
-          {
-            b[i] = 0;
-          }
-        }
-        // Carry
-        int t = 0;            
-        for(int i = n - 1; i >= 0; i--)
-        { 
-          // Adiciona a, b e o carry
-          a[i] = a[i] + b[i] + t;
-        
-          // If a[i] is 2
-          if(a[i] == 2)
-          {
-            a[i] = 0;
-            t = 1;
-          }
-          // Se a[i] for 3
-          else if(a[i] == 3)
-          {
-            a[i] = 1;
-            t = 1;
-          }
-          else
-            t = 0;
-        }
-        cout << endl;
-        // Descarda carry se tiver
-        if(t==1)
-        { 
-        // mostra resultado
-        for(int i = 0; i < n; i++)
-        {
-          // mostra resultado
-          cout<<a[i]; 
-        }
-        }
-        // Se não tiver carry
-        else        
-        { 
-          // Calcula o complemento de 2 do resultado
-          for(int i = 0; i < n; i++)
-          {       
-            if(a[i] == 1)
-              a[i] = 0;
-            else
-              a[i] = 1;
-          }
-          for(int i = n - 1; i >= 0; i--)
-          {
-            if(a[i] == 0)
-            {
-              a[i] = 1;
-              break;
-            }
-          else
-            a[i] = 0;
-          }
-            cout << "-";    
-          // Mostra o array do resultado
-          for(int i = 0; i < n; i++)
-          {
-            cout << a[i];
-
         break;
         case 3://3 - excesso
           //quantos bits a maquina tem, 6 a nossa
@@ -483,39 +235,22 @@ void loop() {
           // valor decimal menos a excesso, 32
           // transformar em bits 
           int excesso = 32;
-          valor = (i5 - i4 - i3 - i2);
-          int binaryToDecimal(int n)
-          {
-              int num = n;
-              int dec_value = 0;
-           
-              int base = 1;
-           
-              int temp = num;
-              while (temp) {
-                  int last_digit = temp % 10;
-                  temp = temp / 10;
-           
-                  dec_value += last_digit * base;
-           
-                  base = base * 2;
-              }
-           
-              return dec_value;
+          int valorExcesso = excesso - y;
+
+          int resultadoExcesso(){
+            int sub = num - valorExcesso;
+            return sub;
           }
 
-          valorExcesso = bit(excesso - binaryToDecimal(valor));
-          /*int main()
-          {           
-              cout << binaryToDecimal(num) << endl;
-          }*/
-          
-        break;
-      
-      if (cout<<"resultado "<<add(a, b, x) > 111111) //caso de overflow
-        digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);digitalWrite(Out4,HIGH);digitalWrite(Out5,HIGH);
-        delay(500);
-        digitalWrite(Out0,LOW);digitalWrite(Out1,LOW);digitalWrite(Out2,LOW);digitalWrite(Out3,LOW);digitalWrite(Out4,LOW);digitalWrite(Out5,LOW);
-        break;
+          if(resultadoExcesso() % 2 > 0) { digitalWrite(Out0, HIGH); } else { digitalWrite(Out0, LOW); }
+          if((resultadoExcesso() % 4) > 1) { digitalWrite(Out1, HIGH); } else { digitalWrite(Out1, LOW); }
+          if((resultadoExcesso() % 8) > 3) { digitalWrite(Out2, HIGH); } else { digitalWrite(Out2, LOW); }
+          if((resultadoExcesso() % 16) > 7) { digitalWrite(Out3, HIGH); } else { digitalWrite(Out3, LOW); }
+          delay(timr);
+              
+          if (resultadoExcesso() > 33) //caso de overflow
+            digitalWrite(Out0,HIGH);digitalWrite(Out1,HIGH);digitalWrite(Out2,HIGH);digitalWrite(Out3,HIGH);digitalWrite(Out4,HIGH);digitalWrite(Out5,HIGH);
+            delay(500);
+            digitalWrite(Out0,LOW);digitalWrite(Out1,LOW);digitalWrite(Out2,LOW);digitalWrite(Out3,LOW);digitalWrite(Out4,LOW);digitalWrite(Out5,LOW);
 
       break;
