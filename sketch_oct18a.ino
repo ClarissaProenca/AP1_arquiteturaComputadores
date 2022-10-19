@@ -28,6 +28,16 @@ void converteDecBin(int num) {
   }
 }
 
+void mostraResultado(){
+  int i=0;
+  while (i < 7){
+    if (b[i] == 0)
+    digitalWrite(OUTPUT,LOW);
+    else
+    digitalWrite(OUTPUT,HIGH);
+  }
+}
+
 void setup() {
   pinMode(In0, INPUT);
   pinMode(In1, INPUT);
@@ -77,6 +87,6 @@ void loop() {
 
       case 3:
       //sub y
-      break;      
+      break;
   }
 }
