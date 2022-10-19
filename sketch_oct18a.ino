@@ -28,6 +28,22 @@ void converteDecBin(int num) {
   }
 }
 
+void compUm(){
+  int i=0;
+  while (i< 7){
+    if (b[i] = 0)
+    b[i] = 1;
+    else if (b[i] = 1)
+    b[i] = 0;
+    i++;
+  }
+}
+
+void comDois(){
+  int i=0, carry = 1;
+  
+}
+
 void mostraResultado(){
   int i=0;
   while (i < 7){
