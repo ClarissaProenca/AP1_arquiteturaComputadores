@@ -41,17 +41,28 @@ void compUm(){
 
 void comDois(){
   int i=0, carry = 1;
-  
+
 }
 
 void mostraResultado(){
   int i=0;
   while (i < 7){
-    if (b[i] == 0)
+    if (b[i] == 0){
     digitalWrite(OUTPUT,LOW);
-    else
+    delay(500);
+    } else {
     digitalWrite(OUTPUT,HIGH);
+    delay(500);
+    }
   }
+}
+
+void piscarLeds(int max){
+  if (max > 111111)
+  digitalWrite(OUTPUT,LOW);
+  delay(500);
+  digitalWrite(OUTPUT,HIGH);
+  delay(500);
 }
 
 void setup() {
