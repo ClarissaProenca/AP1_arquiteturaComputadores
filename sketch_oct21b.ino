@@ -1,3 +1,5 @@
+// pra poder comitar a mensagem 
+
 // Declaração e inicialização de variáveis globais de entrada In5,In4,In3,In2,In1,In0
 int In0 = 30, In1 = 31, In2 = 32, In3 = 33, In4 = 34, In5 = 35;
 // Declaração e inicialização de variáveis globais de saída Out5, Out4,Out3,Out2,Out1,Out0
