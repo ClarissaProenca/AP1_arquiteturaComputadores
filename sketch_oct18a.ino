@@ -207,9 +207,30 @@ void loop() {
         switch(modo){
           case 0:
           //bit sinal
+          int subBit = subY(i2, i3, i4, i5, y);
+            if (subBit < 0){
+              converteDecBin(y);
+              b[0] = {1};
+
+              mostraResultado(o0, o1, o2, o3, o4, o5);
+            } else {
+              converteDecBin(subBit);
+              mostraResultado(o0, o1, o2, o3, o4, o5);
+            }
           break;
           case 1:
           //complemento de 1
+          int subUm = subY(i2, i3, i4, i5, y);
+            if (subUm < 0){
+              converteDecBin(subUm);
+              compUm(b[6], a[6]);
+              converteBinDec(a[6]);
+
+              mostraResultado(o0, o1, o2, o3, o4, o5);
+            } else {
+              converteDecBin(subUm);
+              mostraResultado(o0, o1, o2, o3, o4, o5);
+            }
           break;
           case 2:
           //complemento de 2
