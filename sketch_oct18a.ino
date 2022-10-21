@@ -224,7 +224,6 @@ void loop() {
             if (subUm < 0){
               converteDecBin(subUm);
               compUm(b[6], a[6]);
-              converteBinDec(a[6]);
 
               mostraResultado(o0, o1, o2, o3, o4, o5);
             } else {
