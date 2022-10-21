@@ -8,17 +8,18 @@ int Out0 = 40, Out1 = 41, Out2 = 42, Out3 = 43, Out4 = 44, Out5 = 45;
 int b[6];
 int x = 0;
 int y = 0;
+int num1 = 0;
+int num2 = 0;
+int a[6];
+int dividendo;
+int modo = 0;
+int excesso;
 int o0 = Out0;
 int o1 = Out1;
 int o2 = Out2;
 int o3 = Out3;
 int o4 = Out4;
 int o5 = Out5;
-int num1 = 0;
-int num2 = 0;
-int a[6];
-int dividendo;
-int modo = 0;
 
 //métodos
 
@@ -30,6 +31,11 @@ int somaDecimal(int i2,int i3,int i4,int i5) {
 int subDecimal(int i2,int i3,int i4,int i5) {
   int sub = ((i2 * 1) - (i3 * 2)) - ((i4 * 4) - (i5 * 8));
   return sub;
+}
+
+int subY(int i2,int i3,int i4,int i5, int y) {
+  int suby = ((i2 * 1) - (i3 * 2)) - ((i4 * 4) - (i5 * 8)) - y;
+  return suby;
 }
 
 void converteDecBin(int num) {
@@ -166,8 +172,10 @@ void loop() {
         compUm(b[6], a[6]);
         compDois(a[6]);
         converteBinDec(a[6]);
-        int dividendo = num;
+        int decimal = converteBinDec(a[6]);
+        int dividendo = decimal;
         subComp(i2, i3, dividendo);
+        converteDecBin(subComp);
         mostraResultado(o0, o1, o2, o3, o4, o5);
       } else {
         converteDecBin(sub);
@@ -186,6 +194,7 @@ void loop() {
       case 3:
       //sub y
       modo = 0;
+      y = 10;
       if ((i1==0)&&(i0==0))
         modo = 0;
       else if ((i1==0)&&(i0==1))
@@ -204,9 +213,28 @@ void loop() {
           break;
           case 2:
           //complemento de 2
+            int subDois = subY(i2, i3, i4, i5, y);
+            if (subDois < 0){
+              converteDecBin(subDois);
+              compUm(b[6], a[6]);
+              compDois(a[6]);
+              converteBinDec(a[6]);
+              int decimal = converteBinDec(a[6]);
+              int dividendo = decimal;
+              subComp(i2, i3, dividendo);
+              converteDecBin(subComp);
+              mostraResultado(o0, o1, o2, o3, o4, o5);
+            } else {
+              converteDecBin(subDois);
+              mostraResultado(o0, o1, o2, o3, o4, o5);
+            }
           break;
           case 3:
           //excesso
+            int excesso = 32 - y;
+            int subExcesso = subY(i2, i3, i4, i5, excesso);
+            converteDecBin(subExcesso);
+            mostraResultado(o0, o1, o2, o3, o4, o5);
           break;
         }
       break;
