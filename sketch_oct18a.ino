@@ -8,12 +8,28 @@ int Out0 = 40, Out1 = 41, Out2 = 42, Out3 = 43, Out4 = 44, Out5 = 45;
 int b[6];
 int x = 0;
 int y = 0;
+int o0 = Out0;
+int o1 = Out1;
+int o2 = Out2;
+int o3 = Out3;
+int o4 = Out4;
+int o5 = Out5;
+int num1 = 0;
+int num2 = 0;
+int a[6];
+int dividendo;
+int modo = 0;
 
 //métodos
 
 int somaDecimal(int i2,int i3,int i4,int i5) {
   int soma = ((i2 * 1) + (i3 * 2)) + ((i4 * 4) + (i5 * 8));
   return soma;
+}
+
+int subDecimal(int i2,int i3,int i4,int i5) {
+  int sub = ((i2 * 1) - (i3 * 2)) - ((i4 * 4) - (i5 * 8));
+  return sub;
 }
 
 void converteDecBin(int num) {
@@ -28,23 +44,57 @@ void converteDecBin(int num) {
   }
 }
 
-void compUm(){
+int converteBinDec(int n)
+{
+    int num = n;
+    int decimal = 0;
+    int base = 1;
+ 
+    int temp = num;
+    while (temp) {
+        int ultimo = temp % 10;
+        temp = temp / 10;
+ 
+        decimal += ultimo * base;
+ 
+        base = base * 2;
+    }
+ 
+    return decimal;
+}
+
+void compUm(int b[6], int a[6]){
   int i=0;
   while (i< 7){
     if (b[i] = 0)
-    b[i] = 1;
+    a[i] = 1;
     else if (b[i] = 1)
-    b[i] = 0;
+    a[i] = 0;
     i++;
   }
 }
 
-void comDois(){
+void compDois(int a[6]){
   int i=0, carry = 1;
-
+  while (i<7){
+    if (a[i] == 1 && carry == 1) {
+    a[i] = 0;}
+    else if (a[i] == 0 && carry == 1) {
+    a[i] = 1;
+    carry = 0;
+    } else {
+      a[i] = a[i];
+    }
+    i--;
+  }
 }
 
-void mostraResultado(){
+int subComp(int i2,int i3,int dividendo){
+  int subComp = (i2 * 1) + (i3 * 2) + dividendo;
+  return subComp;
+}
+
+void mostraResultado(int o0, int o1, int o2, int o3, int o4, int o5){
   int i=0;
   while (i < 7){
     if (b[i] == 0){
@@ -88,6 +138,7 @@ void loop() {
   i3 = digitalRead(In3);
   i4 = digitalRead(In4);
   i5 = digitalRead(In5);
+
   if ((i1==0)&&(i0==0))
     entrada = 0;
   else if ((i1==0)&&(i0==1))
@@ -102,18 +153,62 @@ void loop() {
       //adição  
       soma = somaDecimal(i2,i3,i4,i5);
       converteDecBin(soma);
+      mostraResultado(o0, o1, o2, o3, o4, o5);
       break;
 
       case 1:
-      //subtração
+      //sub comp2
+      int sub = subDecimal(i2,i3,i4,i5);
+      int converteDecBin(int num);
+      int num;
+      if (sub < 0){
+        converteDecBin(sub);
+        compUm(b[6], a[6]);
+        compDois(a[6]);
+        converteBinDec(a[6]);
+        int dividendo = num;
+        subComp(i2, i3, dividendo);
+        mostraResultado(o0, o1, o2, o3, o4, o5);
+      } else {
+        converteDecBin(sub);
+        mostraResultado(o0, o1, o2, o3, o4, o5);
+      }
       break;
 
       case 2:
       //add x
+      x = 5;
+      x += somaDecimal(i2,i3,i4,i5);
+      converteDecBin(soma);
+      int piscarLeds(soma);
       break;
 
       case 3:
       //sub y
+      modo = 0;
+      if ((i1==0)&&(i0==0))
+        modo = 0;
+      else if ((i1==0)&&(i0==1))
+        modo = 1;
+      else if ((i1==1)&&(i0==0))
+        modo = 2;
+      else if ((i1==1)&&(i0==1))
+        modo = 3;
+
+        switch(modo){
+          case 0:
+          //bit sinal
+          break;
+          case 1:
+          //complemento de 1
+          break;
+          case 2:
+          //complemento de 2
+          break;
+          case 3:
+          //excesso
+          break;
+        }
       break;
   }
 }
